@@ -120,6 +120,13 @@
             <version>1.8.8</version>
             <scope>provided</scope>
         </dependency>
+        <!--Vault-->
+        <dependency>
+            <groupId>com.fyxridd.lib</groupId>
+            <artifactId>Vault</artifactId>
+            <version>1.8.8</version>
+            <scope>provided</scope>
+        </dependency>
         <!--LibCore-->
         <dependency>
             <groupId>com.fyxridd</groupId>
@@ -127,17 +134,10 @@
             <version>[0.0.1,)</version>
             <scope>provided</scope>
         </dependency>
-        <!--LibConfig-->
+        <!--LibSql-->
         <dependency>
             <groupId>com.fyxridd</groupId>
-            <artifactId>LibConfig</artifactId>
-            <version>[0.0.1,)</version>
-            <scope>provided</scope>
-        </dependency>
-        <!--LibLang-->
-        <dependency>
-            <groupId>com.fyxridd</groupId>
-            <artifactId>LibLang</artifactId>
+            <artifactId>LibSql</artifactId>
             <version>[0.0.1,)</version>
             <scope>provided</scope>
         </dependency>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fyxridd.lib.per.mapper.PerGroupMapper">
+    <select id="selectPerGroups" resultType="com.fyxridd.lib.per.model.PerGroup">
+        select `name`,`inherits`,`pers` from per_group where `name`!="";
+    </select>
+
+    <select id="exist" resultType="java.lang.Boolean">
+        select count(*) from per_group where `name`=#{name};
+    </select>
+
+    <insert id="insert">
+        insert into per_group(`name`, `inherits`, `pers`) values (#{name}, #{inherits}, #{pers});
+    </insert>
+
+    <update id="update">
+        update per_group set `inherits`=#{inherits},`pers`=#{pers} where `name`=#{name};
+    </update>
+
+    <update id="delete">
+        delete from per_group where `name`=#{name};
+    </update>
+</mapper>
