@@ -18,6 +18,13 @@ public class PerPlugin extends SimplePlugin{
     private DaoManager daoManager;
 
     @Override
+    public void onLoad() {
+        super.onLoad();
+        //注册Permission服务
+        Bukkit.getServicesManager().register(Permission.class, new VaultManager(), this, ServicePriority.Highest);
+    }
+
+    @Override
     public void onEnable() {
         instance = this;
 
@@ -27,8 +34,6 @@ public class PerPlugin extends SimplePlugin{
 
         perManager = new PerManager();
         daoManager = new DaoManager();
-        //注册Permission服务
-        Bukkit.getServicesManager().register(Permission.class, new VaultManager(), this, ServicePriority.Highest);
 
         super.onEnable();
     }
