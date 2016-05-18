@@ -1,4 +1,4 @@
 ﻿name: LibPer
 main: com.fyxridd.lib.per.PerPlugin
 version: 0.1.0
-depend: [Vault, LibCore, LibSql]
+depend: [Vault, LibCore]

@@ -1,10 +1,10 @@
 package com.fyxridd.lib.per;
 
+import com.fyxridd.lib.core.api.SqlApi;
 import com.fyxridd.lib.core.api.plugin.SimplePlugin;
 import com.fyxridd.lib.per.manager.DaoManager;
 import com.fyxridd.lib.per.manager.PerManager;
 import com.fyxridd.lib.per.manager.VaultManager;
-import com.fyxridd.lib.sql.api.SqlApi;
 import net.milkbowl.vault.permission.Permission;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.ServicePriority;
