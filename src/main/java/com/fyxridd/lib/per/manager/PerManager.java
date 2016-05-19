@@ -1,7 +1,7 @@
 package com.fyxridd.lib.per.manager;
 
 import com.fyxridd.lib.core.api.PlayerApi;
-import com.fyxridd.lib.core.manager.realname.NotReadyException;
+import com.fyxridd.lib.core.realname.NotReadyException;
 import com.fyxridd.lib.per.PerPlugin;
 import com.fyxridd.lib.per.model.PerGroup;
 import com.fyxridd.lib.per.model.PerUser;

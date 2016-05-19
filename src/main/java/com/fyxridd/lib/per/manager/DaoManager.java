@@ -1,10 +1,10 @@
 package com.fyxridd.lib.per.manager;
 
+import com.fyxridd.lib.core.api.SqlApi;
 import com.fyxridd.lib.per.mapper.PerGroupMapper;
 import com.fyxridd.lib.per.mapper.PerUserMapper;
 import com.fyxridd.lib.per.model.PerGroup;
 import com.fyxridd.lib.per.model.PerUser;
-import com.fyxridd.lib.sql.api.SqlApi;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.*;
