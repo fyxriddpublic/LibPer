@@ -24,7 +24,9 @@ public class DaoManager {
     }
 
     public void saveOrUpdatePerGroup(PerGroup group) {
-        saveOrUpdatePerGroups(Collections.singletonList(group));
+        List<PerGroup> list = new ArrayList<>();
+        list.add(group);
+        saveOrUpdatePerGroups(list);
     }
 
     public void saveOrUpdatePerGroups(Collection<PerGroup> c) {
@@ -42,7 +44,9 @@ public class DaoManager {
     }
 
     public void deletePerGroup(PerGroup group) {
-        deletePerGroups(Collections.singletonList(group));
+        List<PerGroup> list = new ArrayList<>();
+        list.add(group);
+        deletePerGroups(list);
     }
 
     public void deletePerGroups(Collection<PerGroup> c) {
