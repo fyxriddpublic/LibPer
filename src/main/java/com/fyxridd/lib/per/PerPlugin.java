@@ -14,8 +14,8 @@ import java.io.File;
 public class PerPlugin extends SimplePlugin{
     public static PerPlugin instance;
 
-    private PerManager perManager;
     private DaoManager daoManager;
+    private PerManager perManager;
 
     @Override
     public void onLoad() {
@@ -32,8 +32,8 @@ public class PerPlugin extends SimplePlugin{
         SqlApi.registerMapperXml(new File(dataPath, "PerGroupMapper.xml"));
         SqlApi.registerMapperXml(new File(dataPath, "PerUserMapper.xml"));
 
-        perManager = new PerManager();
         daoManager = new DaoManager();
+        perManager = new PerManager();
 
         super.onEnable();
     }
