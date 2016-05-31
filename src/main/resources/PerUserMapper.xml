@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fyxridd.lib.per.mapper.PerUserMapper">
+    <resultMap id="PerUser" type="com.fyxridd.lib.per.model.PerUser">
+        <id column="name" property="name"/>
+        <result column="groups" property="groups" typeHandler="com.fyxridd.lib.core.api.mybatis.ObjectTypeHandler"/>
+        <result column="pers" property="pers" typeHandler="com.fyxridd.lib.core.api.mybatis.ObjectTypeHandler"/>
+    </resultMap>
+
     <select id="exist" resultType="java.lang.Boolean">
         select count(*) from per_user where `name`=#{name};
     </select>
 
-    <select id="selectPerUser" resultType="com.fyxridd.lib.per.model.PerUser">
+    <select id="selectPerUser" resultMap="PerUser">
         select `name`,`groups`,`pers` from per_user where name = #{name};
     </select>
 

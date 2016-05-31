@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fyxridd.lib.per.mapper.PerGroupMapper">
-    <select id="selectPerGroups" resultType="com.fyxridd.lib.per.model.PerGroup">
-        select `name`,`inherits`,`pers` from per_group where `name`!="";
-    </select>
+    <resultMap id="PerGroup" type="com.fyxridd.lib.per.model.PerGroup">
+        <id column="name" property="name"/>
+        <result column="inherits" property="inherits" typeHandler="com.fyxridd.lib.core.api.mybatis.ObjectTypeHandler"/>
+        <result column="pers" property="pers" typeHandler="com.fyxridd.lib.core.api.mybatis.ObjectTypeHandler"/>
+    </resultMap>
 
     <select id="exist" resultType="java.lang.Boolean">
         select count(*) from per_group where `name`=#{name};
+    </select>
+
+    <select id="selectPerGroups" resultMap="PerGroup">
+        select `name`,`inherits`,`pers` from per_group where `name`!="";
     </select>
 
     <insert id="insert">

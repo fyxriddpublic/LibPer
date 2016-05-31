@@ -10,9 +10,9 @@ public interface PerGroupMapper {
 
     boolean exist(@Param("name") String name);
 
-    void insert(@Param("perGroup") PerGroup user);
+    void insert(PerGroup user);
 
-    void update(@Param("perGroup") PerGroup user);
+    void update(PerGroup user);
 
     void delete(@Param("name") String name);
 }

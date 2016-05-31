@@ -8,8 +8,8 @@ public interface PerUserMapper {
 
     PerUser selectPerUser(@Param("name") String name);
 
-    void insert(@Param("user") PerUser user);
+    void insert(PerUser user);
 
-    void update(@Param("user") PerUser user);
+    void update(PerUser user);
 
 }

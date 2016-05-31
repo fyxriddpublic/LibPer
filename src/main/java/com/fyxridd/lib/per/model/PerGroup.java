@@ -5,7 +5,7 @@ import java.util.Set;
 /**
  * 权限组
  */
-public class PerGroup {
+public class PerGroup{
     //组名
     private String name;
     //可为空不为null

@@ -5,7 +5,7 @@ import java.util.Set;
 /**
  * 权限用户
  */
-public class PerUser {
+public class PerUser{
     //用户名
     private String name;
     //可为空不为null
