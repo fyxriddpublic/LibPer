@@ -24,21 +24,13 @@ public class DaoManager {
     }
 
     public void saveOrUpdatePerGroup(PerGroup group) {
-        List<PerGroup> list = new ArrayList<>();
-        list.add(group);
-        saveOrUpdatePerGroups(list);
-    }
-
-    public void saveOrUpdatePerGroups(Collection<PerGroup> c) {
         SqlSession session = SqlApi.getSqlSessionFactory().openSession();
         try {
             PerGroupMapper mapper = session.getMapper(PerGroupMapper.class);
-            for (PerGroup group:c) {
-                if (!mapper.exist(group.getName())) mapper.insert(group);
-                else mapper.update(group);
-            }
-            session.commit();
+            if (!mapper.exist(group.getName())) mapper.insert(group);
+            else mapper.update(group);
         } finally {
+            session.commit();
             session.close();
         }
     }

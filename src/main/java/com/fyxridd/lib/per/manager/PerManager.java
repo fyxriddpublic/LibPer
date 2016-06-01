@@ -1,7 +1,6 @@
 package com.fyxridd.lib.per.manager;
 
 import com.fyxridd.lib.core.api.PlayerApi;
-import com.fyxridd.lib.core.api.exception.NotReadyException;
 import com.fyxridd.lib.per.PerPlugin;
 import com.fyxridd.lib.per.model.PerGroup;
 import com.fyxridd.lib.per.model.PerUser;
@@ -48,15 +47,20 @@ public class PerManager {
             Bukkit.getPluginManager().registerEvent(PluginDisableEvent.class, PerPlugin.instance, EventPriority.NORMAL, new EventExecutor() {
                 @Override
                 public void execute(Listener listener, Event e) throws EventException {
-                    saveAll();
+                    if (e instanceof PluginDisableEvent) {
+                        PluginDisableEvent event = (PluginDisableEvent) e;
+                        if (event.getPlugin().getName().equals(PerPlugin.instance.pn)) saveAll();
+                    }
                 }
             }, PerPlugin.instance);
             //玩家进服事件
             Bukkit.getPluginManager().registerEvent(PlayerJoinEvent.class, PerPlugin.instance, EventPriority.LOWEST, new EventExecutor() {
                 @Override
                 public void execute(Listener listener, Event e) throws EventException {
-                    PlayerJoinEvent event = (PlayerJoinEvent) e;
-                    checkInit(event.getPlayer().getName());
+                    if (e instanceof PlayerJoinEvent) {
+                        PlayerJoinEvent event = (PlayerJoinEvent) e;
+                        checkInit(event.getPlayer().getName());
+                    }
                 }
             }, PerPlugin.instance);
         }
@@ -80,11 +84,7 @@ public class PerManager {
         if (per == null || per.isEmpty()) return true;
 
         //玩家存在性检测
-        try {
-            name = PlayerApi.getRealName(null, name);
-        } catch (NotReadyException e) {
-            return false;
-        }
+        name = PlayerApi.getRealName(null, name);
         if (name == null) return false;
 
         //检测
@@ -102,11 +102,7 @@ public class PerManager {
     public boolean add(String name, String per) {
         if (name == null || per == null || per.isEmpty()) return false;
         //玩家存在性检测
-        try {
-            name = PlayerApi.getRealName(null, name);
-        } catch (NotReadyException e) {
-            return false;
-        }
+        name = PlayerApi.getRealName(null, name);
         if (name == null) return false;
         //读取
         PerUser pu = checkInit(name);
@@ -129,11 +125,7 @@ public class PerManager {
     public boolean del(String name, String per) {
         if (name == null || per == null) return false;
         //玩家存在性检测
-        try {
-            name = PlayerApi.getRealName(null, name);
-        } catch (NotReadyException e) {
-            return false;
-        }
+        name = PlayerApi.getRealName(null, name);
         if (name == null) return false;
         //读取
         PerUser pu = checkInit(name);
@@ -156,11 +148,7 @@ public class PerManager {
     public boolean hasGroup(String name, String groupName, boolean loop) {
         if (name == null || groupName == null) return false;
         //玩家存在性检测
-        try {
-            name = PlayerApi.getRealName(null, name);
-        } catch (NotReadyException e) {
-            return false;
-        }
+        name = PlayerApi.getRealName(null, name);
         if (name == null) return false;
         //权限组不存在
         PerGroup group = groupHash.get(groupName);
@@ -186,11 +174,7 @@ public class PerManager {
         if (name == null || groupName == null) return false;
 
         //玩家存在性检测
-        try {
-            name = PlayerApi.getRealName(null, name);
-        } catch (NotReadyException e) {
-            return false;
-        }
+        name = PlayerApi.getRealName(null, name);
         if (name == null) return false;
         //权限组不存在
         PerGroup group = groupHash.get(groupName);
@@ -218,11 +202,7 @@ public class PerManager {
         if (name == null || groupName == null) return false;
 
         //玩家存在性检测
-        try {
-            name = PlayerApi.getRealName(null, name);
-        } catch (NotReadyException e) {
-            return false;
-        }
+        name = PlayerApi.getRealName(null, name);
         if (name == null) return false;
         //权限组不存在
         PerGroup group = groupHash.get(groupName);
